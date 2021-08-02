@@ -1,0 +1,7 @@
+{
+  "name": "PracticaFinal-PlataformasMoviles",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
