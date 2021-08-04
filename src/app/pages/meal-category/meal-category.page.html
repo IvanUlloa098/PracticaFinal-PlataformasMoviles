@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>mealCategory</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-searchbar
+    showcancelbutton=""
+    (ionInput)="filterList($event)"
+  ></ion-searchbar>
+
+  <ion-list lines="none">
+    <ion-list-header>
+      Meals
+    </ion-list-header>
+
+    <div *ngFor="let item of meals">
+      <ion-item>
+        <ion-avatar slot="start">
+          <img [src]="item.strMealThumb" alt="">
+        </ion-avatar>
+        <ion-label class="ion-text-wrap">
+          <ion-text color="primary"><h2>{{item.strMeal}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+    </div>
+
+  </ion-list>
+</ion-content>

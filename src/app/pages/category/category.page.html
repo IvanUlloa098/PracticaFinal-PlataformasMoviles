@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>category</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <ion-list-header>
+      Categories
+    </ion-list-header>
+
+    <div *ngFor="let item of categories">
+      <ion-item (click)="goCategories(item.strCategory)">
+        <ion-avatar slot="start">
+          <img [src]="item.strCategoryThumb" alt="">
+        </ion-avatar>
+        <ion-label class="ion-text-wrap">
+          <ion-text color="primary"><h2>{{item.strCategory}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+    </div>
+
+  </ion-list>
+</ion-content>
