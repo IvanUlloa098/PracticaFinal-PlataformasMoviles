@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { MealsService } from 'src/app/service/meals.service';
 
 @Component({
@@ -46,6 +46,16 @@ export class MealCategoryPage implements OnInit {
         return (ref.strMeal.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
       }
     });
+  }
+
+  toDisplay(id: string) {
+    let params: NavigationExtras = {
+      queryParams: {
+        id:id
+      }
+    }
+    
+    this.router.navigate(['display-meal'], params)
   }
 
 }

@@ -17,7 +17,7 @@
     </ion-list-header>
 
     <div *ngFor="let item of meals">
-      <ion-item>
+      <ion-item (click)="toDisplay(item.idMeal)">
         <ion-avatar slot="start">
           <img [src]="item.strMealThumb" alt="">
         </ion-avatar>
