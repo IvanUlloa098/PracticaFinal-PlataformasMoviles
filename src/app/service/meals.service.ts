@@ -22,4 +22,8 @@ export class MealsService {
     return this.http.get<any>(environment.WS_PATH + "/filter.php?c=" + category).toPromise()
   }
 
+  getMealById(id: string) {
+    return this.http.get<any>(environment.WS_PATH + "/lookup.php?i=" + id).toPromise()
+  }
+
 }

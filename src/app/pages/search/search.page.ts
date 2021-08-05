@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { MealsService } from 'src/app/service/meals.service';
 import { environment } from 'src/environments/environment';
 
@@ -46,6 +46,16 @@ export class SearchPage implements OnInit {
 
   toCategories() {
     this.router.navigate(['category'])
+  }
+
+  toDisplay(id: string) {
+    let params: NavigationExtras = {
+      queryParams: {
+        id:id
+      }
+    }
+    
+    this.router.navigate(['display-meal'], params)
   }
 
 }

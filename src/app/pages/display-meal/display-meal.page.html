@@ -1,0 +1,176 @@
+<ion-header translucent>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+  
+  <ion-toolbar>
+    <ion-title size="small">Meals</ion-title>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content>
+
+  <ion-segment scrollable (ionChange)="segmentChanged($event)" value="javascript" [(ngModel)]="type">
+    <ion-segment-button value="meal">
+      <ion-label>Meal</ion-label>
+      
+    </ion-segment-button>
+    <ion-segment-button value="ingredients">
+      <ion-label>Ingredients</ion-label>
+      
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="type" *ngFor="let item of meal">
+
+    <ion-card *ngSwitchCase="'meal'">
+      <img [src]="item.strMealThumb" />
+      <ion-card-header>
+        <ion-card-subtitle>{{item.strArea}}</ion-card-subtitle>
+        <ion-card-title>{{item.strMeal}}</ion-card-title>
+        
+        <ion-chip (click) = "goCategories(item.strCategory)" outline color="tertiary">
+          <ion-icon name="restaurant"></ion-icon>
+          <ion-label>{{item.strCategory}}</ion-label>
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-chip>
+
+      </ion-card-header>
+      <ion-card-content>
+        {{item.strInstructions}}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-list *ngSwitchCase="'ingredients'" lines="none">
+  
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure1}} {{item.strIngredient1}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure2}} {{item.strIngredient2}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure3}} {{item.strIngredient3}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure4}} {{item.strIngredient4}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure5}} {{item.strIngredient5}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure6}} {{item.strIngredient6}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure7}} {{item.strIngredient7}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure8}} {{item.strIngredient8}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure9}} {{item.strIngredient9}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure10}} {{item.strIngredient10}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure11}} {{item.strIngredient11}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure12}} {{item.strIngredient12}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure13}} {{item.strIngredient13}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure14}} {{item.strIngredient14}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure15}} {{item.strIngredient15}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure16}} {{item.strIngredient16}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure17}} {{item.strIngredient17}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure18}} {{item.strIngredient18}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure19}} {{item.strIngredient19}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text ><h2>{{item.strMeasure20}} {{item.strIngredient20}}</h2></ion-text>            
+        </ion-label>
+      </ion-item>
+      
+  
+    </ion-list>
+    
+  </div>
+
+  
+  
+  
+</ion-content>
+
