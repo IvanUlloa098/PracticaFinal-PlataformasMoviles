@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { Comment } from 'src/app/domain/comment';
 import { Item } from 'src/app/domain/item';
 import { CartService } from 'src/app/service/cart.service';
+import { FeedbackService } from 'src/app/service/feedback.service';
 import { MealsService } from 'src/app/service/meals.service';
 import { ProvidersService } from 'src/app/service/providers.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-display-meal',
@@ -22,10 +25,13 @@ export class DisplayMealPage implements OnInit {
   prices: any
   item: Item
 
+  comment: Comment = new Comment()
+  comments: any
+
   p: number
   n: string
 
-  constructor(private alertCtrl: AlertController, private cartService: CartService, private activate: ActivatedRoute, private router: Router, private providersService: ProvidersService, private mealsService : MealsService) { 
+  constructor(private datePipe: DatePipe, private feedbackService: FeedbackService, private alertCtrl: AlertController, private cartService: CartService, private activate: ActivatedRoute, private router: Router, private providersService: ProvidersService, private mealsService : MealsService) { 
     activate.queryParams.subscribe(params => {
       if(this.router.getCurrentNavigation().extras.queryParams){
         this.id = this.router.getCurrentNavigation().extras.queryParams.id
@@ -37,6 +43,7 @@ export class DisplayMealPage implements OnInit {
     this.type = 'meal';
     this.meal = await this.initializeItems()
     this.ingredients = await this.mealsService.getIngredients()
+    await this.feedbackService.getComments(this.id).subscribe(res => this.comments = res)
     await this.mealsService.getPrices().subscribe(res => this.prices = res)
     //await this.providersService.fillPrices()
     
@@ -64,6 +71,26 @@ export class DisplayMealPage implements OnInit {
   concatURL(name) {
     let test = "https://www.themealdb.com/images/ingredients/"+name+".png"
     return console.log(test)
+  }
+
+  getIngredient(name: string) {
+    return this.ingredients['meals'].find(s => s.strIngredient === name).idIngredient
+  }
+
+  getPrice(id: string) {
+    return this.prices.find(s => s.idIngredient === id).price
+  }
+
+  newComment() {
+    let date = new Date()
+
+    this.comment.user = "testing"
+    this.comment.idMeal = this.id
+    this.comment.date = this.datePipe.transform(date,"yyyy-MM-dd").toString()
+
+    this.feedbackService.addComment(this.comment)
+    this.comment.comment = ""
+    console.log(this.comment)
   }
 
   async showPrompt(name: string) {  
@@ -112,14 +139,6 @@ export class DisplayMealPage implements OnInit {
       ]  
     });  
     await prompt.present();  
-  }  
-
-  getIngredient(name: string) {
-    return this.ingredients['meals'].find(s => s.strIngredient === name).idIngredient
-  }
-
-  getPrice(id: string) {
-    return this.prices.find(s => s.idIngredient === id).price
   }
 
   async allConfirm() {

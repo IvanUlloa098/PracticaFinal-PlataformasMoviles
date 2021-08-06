@@ -24,24 +24,47 @@
 
   <div [ngSwitch]="type" *ngFor="let item of meal">
 
-    <ion-card *ngSwitchCase="'meal'">
-      <img [src]="item.strMealThumb" />
-      
-      <ion-card-header>
-        <ion-card-subtitle>{{item.strArea}}</ion-card-subtitle>
-        <ion-card-title>{{item.strMeal}}</ion-card-title>
+    <div *ngSwitchCase="'meal'">
+      <ion-card >
+        <img [src]="item.strMealThumb" />
         
-        <ion-chip (click) = "goCategories(item.strCategory)" outline color="tertiary">
-          <ion-icon name="restaurant"></ion-icon>
-          <ion-label>{{item.strCategory}}</ion-label>
-          <ion-icon name="close-circle"></ion-icon>
-        </ion-chip>
+        <ion-card-header>
+          <ion-card-subtitle>{{item.strArea}}</ion-card-subtitle>
+          <ion-card-title>{{item.strMeal}}</ion-card-title>
+          
+          <ion-chip (click) = "goCategories(item.strCategory)" outline color="tertiary">
+            <ion-icon name="restaurant"></ion-icon>
+            <ion-label>{{item.strCategory}}</ion-label>
+            <ion-icon name="close-circle"></ion-icon>
+          </ion-chip>
+  
+        </ion-card-header>
+        <ion-card-content>
+          {{item.strInstructions}}
+        </ion-card-content>
+      </ion-card>
 
-      </ion-card-header>
-      <ion-card-content>
-        {{item.strInstructions}}
-      </ion-card-content>
-    </ion-card>
+      <section>
+        <!-- Textarea in an item with a floating label -->
+        <ion-item>
+          <ion-textarea [(ngModel)]="comment.comment" placeholder="Write a comment..."></ion-textarea>
+          <ion-icon (click) = "newComment()" slot="end" name="send" ></ion-icon>
+        </ion-item>
+      </section>
+        
+      <div *ngFor="let c of comments">
+
+        <ion-item>
+          <ion-label position="stacked">{{c.date}}</ion-label>
+          <ion-textarea
+            disabled
+            readonly
+            [value]="c.comment">
+          </ion-textarea>
+        </ion-item>
+      </div>
+
+    </div>
 
     <ion-list *ngSwitchCase="'ingredients'" lines="none">
 
