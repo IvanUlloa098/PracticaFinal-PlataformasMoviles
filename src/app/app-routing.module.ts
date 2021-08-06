@@ -25,6 +25,10 @@ const routes: Routes = [
   },  {
     path: 'display-meal',
     loadChildren: () => import('./pages/display-meal/display-meal.module').then( m => m.DisplayMealPageModule)
+  },
+  {
+    path: 'search-ingredients',
+    loadChildren: () => import('./pages/search-ingredients/search-ingredients.module').then( m => m.SearchIngredientsPageModule)
   }
 
 ];

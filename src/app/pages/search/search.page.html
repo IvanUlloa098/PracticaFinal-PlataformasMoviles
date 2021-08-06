@@ -32,19 +32,15 @@
 <ion-content>
   <ion-searchbar showcancelbutton="" (ionInput)="filterList($event)"></ion-searchbar>
 
-  <section>
-    <ion-button size="small">Default</ion-button>
-    <ion-button size="small" color="secondary">Secondary</ion-button>
-    <ion-button size="small" color="tertiary" (click)="toCategories()">Categories</ion-button>
-  </section>
-
   <ion-list lines="none">
-    <ion-list-header>
-      Type name in the searchbar...
-    </ion-list-header>
+
+    <section>
+      <ion-button size="small" (click)="toIngredients()">Buy Ingredients</ion-button>
+      <ion-button size="small" color="tertiary" (click)="toCategories()">Look Categories</ion-button>
+    </section>
 
     <div *ngFor="let item of meals">
-      <ion-item (click)="toDisplay(item.idMeal)">
+      <ion-item  (click)="toDisplay(item.idMeal)">
         <ion-avatar slot="start">
           <img [src]="item.strMealThumb" alt="">
         </ion-avatar>

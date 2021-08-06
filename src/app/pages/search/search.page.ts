@@ -48,6 +48,10 @@ export class SearchPage implements OnInit {
     this.router.navigate(['category'])
   }
 
+  toIngredients() {
+    this.router.navigate(['search-ingredients'])
+  }
+
   toDisplay(id: string) {
     let params: NavigationExtras = {
       queryParams: {

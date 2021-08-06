@@ -27,8 +27,8 @@ export class DisplayMealPage implements OnInit {
   async ngOnInit() {
     this.type = 'meal';
     this.meal = await this.initializeItems()
-    //console.log(this.meal)
     //await this.providersService.fillPrices()
+    //console.log(this.meal)
   }
 
   async initializeItems(): Promise<any> {

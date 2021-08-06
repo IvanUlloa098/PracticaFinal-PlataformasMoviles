@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Search Ingredients</ion-title>
+  </ion-toolbar>
+
+  <style>
+    :root {
+      --ion-safe-area-top: 20px;
+      --ion-safe-area-bottom: 22px;
+    }
+  </style>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-searchbar
+    showcancelbutton=""
+    (ionInput)="filterList($event)"
+  ></ion-searchbar>
+
+  <ion-list lines="none">
+    <ion-list-header>
+      Ingredients
+    </ion-list-header>
+
+    <div *ngFor="let item of ingredients">
+      <ion-item (click)="showPrompt(item)">
+        <ion-avatar slot="start">
+          <img [src]="concatURL(item.strIngredient)" alt="">
+        </ion-avatar>
+        <ion-label class="ion-text-wrap">
+          <ion-text color="primary"><h2>{{item.strIngredient}}</h2></ion-text>            
+        </ion-label>
+        <ion-note slot="end" >${{getPrice(item.idIngredient)}}</ion-note>
+      </ion-item>
+    </div>
+
+  </ion-list>
+</ion-content>
