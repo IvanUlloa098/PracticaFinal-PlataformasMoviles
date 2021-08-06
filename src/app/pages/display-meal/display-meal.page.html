@@ -26,6 +26,7 @@
 
     <ion-card *ngSwitchCase="'meal'">
       <img [src]="item.strMealThumb" />
+      
       <ion-card-header>
         <ion-card-subtitle>{{item.strArea}}</ion-card-subtitle>
         <ion-card-title>{{item.strMeal}}</ion-card-title>
@@ -43,122 +44,126 @@
     </ion-card>
 
     <ion-list *ngSwitchCase="'ingredients'" lines="none">
+
+      <ion-list-header>
+        <ion-button size="small" (click)="allConfirm()">+ Add All Ingredients</ion-button>
+      </ion-list-header>
   
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient1)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure1}} {{item.strIngredient1}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient2)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure2}} {{item.strIngredient2}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient3)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure3}} {{item.strIngredient3}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient4)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure4}} {{item.strIngredient4}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient5)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure5}} {{item.strIngredient5}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient6)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure6}} {{item.strIngredient6}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient7)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure7}} {{item.strIngredient7}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient8)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure8}} {{item.strIngredient8}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient9)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure9}} {{item.strIngredient9}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient10)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure10}} {{item.strIngredient10}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient11)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure11}} {{item.strIngredient11}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient12)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure12}} {{item.strIngredient12}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient13)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure13}} {{item.strIngredient13}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient14)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure14}} {{item.strIngredient14}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient15)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure15}} {{item.strIngredient15}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient16)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure16}} {{item.strIngredient16}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient17)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure17}} {{item.strIngredient17}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient18)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure18}} {{item.strIngredient18}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient19)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure19}} {{item.strIngredient19}}</h2></ion-text>            
         </ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="showPrompt(item.strIngredient20)">
         <ion-label class="ion-text-wrap">
           <ion-text ><h2>{{item.strMeasure20}} {{item.strIngredient20}}</h2></ion-text>            
         </ion-label>

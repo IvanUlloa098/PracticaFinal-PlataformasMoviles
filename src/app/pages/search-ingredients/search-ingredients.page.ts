@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MealsService } from 'src/app/service/meals.service';
-import { AlertController } from '@ionic/angular'; 
+import { AlertController, NavController } from '@ionic/angular'; 
 import { Item } from 'src/app/domain/item';
 import { CartService } from 'src/app/service/cart.service';
 
@@ -10,6 +10,7 @@ import { CartService } from 'src/app/service/cart.service';
   templateUrl: './search-ingredients.page.html',
   styleUrls: ['./search-ingredients.page.scss'],
 })
+
 export class SearchIngredientsPage implements OnInit {
 
   ingredients: any
@@ -86,6 +87,7 @@ export class SearchIngredientsPage implements OnInit {
               this.item.idIngredient = item.idIngredient
               this.item.units = data.amount
               this.item.amount = data.amount*this.p
+              this.item.user = "testing"
               
               console.log(this.item)
               this.cartService.addToCart(this.item)
@@ -102,5 +104,4 @@ export class SearchIngredientsPage implements OnInit {
   getPrice(id: string) {
     return this.prices.find(s => s.idIngredient === id).price
   }
-
 }
