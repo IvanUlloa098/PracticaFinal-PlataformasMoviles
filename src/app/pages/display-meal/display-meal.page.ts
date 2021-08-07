@@ -8,6 +8,7 @@ import { FeedbackService } from 'src/app/service/feedback.service';
 import { MealsService } from 'src/app/service/meals.service';
 import { ProvidersService } from 'src/app/service/providers.service';
 import { DatePipe } from '@angular/common';
+import { Rating } from 'src/app/domain/rating';
 
 @Component({
   selector: 'app-display-meal',
@@ -31,6 +32,11 @@ export class DisplayMealPage implements OnInit {
   p: number
   n: string
 
+  rate: any
+
+  currentRate: string = "0"
+  newRate: Rating
+
   constructor(private datePipe: DatePipe, private feedbackService: FeedbackService, private alertCtrl: AlertController, private cartService: CartService, private activate: ActivatedRoute, private router: Router, private providersService: ProvidersService, private mealsService : MealsService) { 
     activate.queryParams.subscribe(params => {
       if(this.router.getCurrentNavigation().extras.queryParams){
@@ -44,6 +50,14 @@ export class DisplayMealPage implements OnInit {
     this.meal = await this.initializeItems()
     this.ingredients = await this.mealsService.getIngredients()
     await this.feedbackService.getComments(this.id).subscribe(res => this.comments = res)
+    await this.feedbackService.getRating("testing",this.id).subscribe(res => {
+      this.rate = res[0];
+
+      try {
+        this.currentRate=this.rate.rate
+      } catch (error) { }
+    })
+    
     await this.mealsService.getPrices().subscribe(res => this.prices = res)
     //await this.providersService.fillPrices()
     
@@ -91,6 +105,25 @@ export class DisplayMealPage implements OnInit {
     this.feedbackService.addComment(this.comment)
     this.comment.comment = ""
     console.log(this.comment)
+  }
+
+  onRatingChange(rating) {
+
+    if(this.rate == undefined){
+      
+      this.newRate = new Rating()
+      this.newRate.idMeal = this.id
+      this.newRate.user = "testing"
+      this.newRate.rate = rating.toString()
+
+      this.feedbackService.saveRating(this.newRate)
+      console.log("not found")
+    } else {
+      this.rate.rate = rating.toString()
+      this.feedbackService.saveRating(this.rate)
+      console.log('The evaluation was modified and now its value is: ',rating);
+    }
+    
   }
 
   async showPrompt(name: string) {  

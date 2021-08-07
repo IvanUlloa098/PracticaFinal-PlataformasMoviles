@@ -37,12 +37,24 @@
             <ion-label>{{item.strCategory}}</ion-label>
             <ion-icon name="close-circle"></ion-icon>
           </ion-chip>
-  
+
+          <ionic-rating-component #rating
+            activeIcon = "star"
+            defaultIcon = "star-outline"
+            readonly="false"
+            [rating]="currentRate"
+            fontSize = "32px"
+            (ratingChanged)="onRatingChange($event)">
+          </ionic-rating-component>
+
         </ion-card-header>
+
         <ion-card-content>
           {{item.strInstructions}}
         </ion-card-content>
+        
       </ion-card>
+
 
       <section>
         <!-- Textarea in an item with a floating label -->

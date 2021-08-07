@@ -16,6 +16,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { environment } from 'src/environments/environment';
 import { DatePipe } from '@angular/common';
+import { IonicRatingComponentModule } from 'ionic-rating-component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ import { DatePipe } from '@angular/common';
     AngularFirestoreModule, AngularFireAuthModule, 
     AngularFireStorageModule, 
     HttpClientModule, 
+    IonicRatingComponentModule,
     AppRoutingModule],
   providers: [DatePipe,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
