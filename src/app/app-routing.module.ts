@@ -29,6 +29,10 @@ const routes: Routes = [
   {
     path: 'search-ingredients',
     loadChildren: () => import('./pages/search-ingredients/search-ingredients.module').then( m => m.SearchIngredientsPageModule)
+  },
+  {
+    path: 'location',
+    loadChildren: () => import('./pages/location/location.module').then( m => m.LocationPageModule)
   }
 
 ];

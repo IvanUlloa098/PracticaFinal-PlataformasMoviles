@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AgmCoreModule } from '@agm/core';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -27,6 +28,7 @@ import { IonicRatingComponentModule } from 'ionic-rating-component';
     AngularFirestoreModule, AngularFireAuthModule, 
     AngularFireStorageModule, 
     HttpClientModule, 
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyCT9wzsIIAkW95uHWVvCbBEP-xtjNbJPow', libraries: ['places', 'geometry']}),
     IonicRatingComponentModule,
     AppRoutingModule],
   providers: [DatePipe,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
