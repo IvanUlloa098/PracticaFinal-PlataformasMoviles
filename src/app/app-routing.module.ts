@@ -29,6 +29,10 @@ const routes: Routes = [
   {
     path: 'search-ingredients',
     loadChildren: () => import('./pages/search-ingredients/search-ingredients.module').then( m => m.SearchIngredientsPageModule)
+  },
+  {
+    path: 'inicio-app',
+    loadChildren: () => import('./pages/inicio-app/inicio-app.module').then( m => m.InicioAppPageModule)
   }
 
 ];
