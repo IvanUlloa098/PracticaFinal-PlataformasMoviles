@@ -15,6 +15,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { environment } from 'src/environments/environment';
+import { DatePipe } from '@angular/common';
+import { IonicRatingComponentModule } from 'ionic-rating-component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,8 +27,9 @@ import { environment } from 'src/environments/environment';
     AngularFirestoreModule, AngularFireAuthModule, 
     AngularFireStorageModule, 
     HttpClientModule, 
+    IonicRatingComponentModule,
     AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [DatePipe,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

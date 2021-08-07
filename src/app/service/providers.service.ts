@@ -20,19 +20,15 @@ export class ProvidersService {
     const refContactos = this.afs.collection("ingredients") 
     this.ingredients = await this.http.get<any>(environment.WS_PATH + "/list.php?i=list").toPromise()
 
-    this.afs.collection<any>("establishments").valueChanges().subscribe(res => {
+    for (let i = 0; i < 607; i++) {
+      this.ingredient = new Ingredient()
+      this.ingredient.id = this.afs.createId()
+      this.ingredient.idIngredient = this.ingredients['meals'][i].idIngredient
+      this.ingredient.price = Math.floor(Math.random() * (5 - 0.50)) + 0.50
 
-      for (let i = 540; i < 600; i++) {
-        this.ingredient = new Ingredient()
-        this.ingredient.id = this.afs.createId()
-        this.ingredient.marketId=res[9].id
-        this.ingredient.idIngredient = this.ingredients['meals'][i].idIngredient
-        this.ingredient.price = Math.floor(Math.random() * (5 - 0.50)) + 0.50
+      refContactos.doc(this.ingredient.id).set(Object.assign({}, this.ingredient))
 
-        //refContactos.doc(this.ingredient.id).set(Object.assign({}, this.ingredient))
-
-      }
-    });
+    }
 
   }
 

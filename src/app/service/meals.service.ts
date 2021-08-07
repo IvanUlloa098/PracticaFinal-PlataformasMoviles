@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MealsService {
 
-  constructor(private http: HttpClient) { }
+  price: any
+
+  constructor(public afs: AngularFirestore, private http: HttpClient) { }
 
   getSearchResult(params: string)  {
     return this.http.get<any>(environment.WS_PATH + "/search.php?s=" + params).toPromise()
@@ -25,5 +28,16 @@ export class MealsService {
   getMealById(id: string) {
     return this.http.get<any>(environment.WS_PATH + "/lookup.php?i=" + id).toPromise()
   }
+
+  getIngredients() {
+    return this.http.get<any>(environment.WS_PATH + "/list.php?i=list").toPromise()
+  }
+
+  getPrices(): Observable<any[]> {
+    return this.afs.collection("ingredients").valueChanges()
+    
+  }
+
+
 
 }
