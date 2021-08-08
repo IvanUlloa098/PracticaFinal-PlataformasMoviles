@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Your Location</ion-title>
+  </ion-toolbar>
+
+  <style>
+    agm-map {
+      height: 330px;
+    }
+    :root {
+      --ion-safe-area-top: 20px;
+      --ion-safe-area-bottom: 22px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</ion-header>
+
+<ion-content>
+
+  <div class="container">
+  
+    <div class="form-group">
+      <label>Enter the address for your delivery</label>
+      <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+    </div>
+
+    <div >
+      <ion-item>
+        <ion-label>Locations used</ion-label>
+        <ion-select  interface="popover" [(ngModel)]="selecTedValue" (ionChange)="setLocation(selecTedValue)">
+          <ion-select-option *ngFor="let item of locations" [value]="item">{{item.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    
+  
+    <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+      <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+        (dragEnd)="markerDragEnd($event)"></agm-marker>
+    </agm-map>
+    
+    <ion-item>
+      <ion-label position="stacked">Lat: {{latitude}}  Lng: {{longitude}}</ion-label>
+      <ion-textarea disabled readonly >
+        <h5>Current Location: </h5> 
+        <p>{{address}}</p>
+
+      </ion-textarea>
+      
+    </ion-item>
+
+    
+    
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="saveLocation()">
+      <ion-icon name="rocket-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
+</ion-content>
