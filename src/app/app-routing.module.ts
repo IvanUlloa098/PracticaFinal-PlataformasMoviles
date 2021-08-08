@@ -22,7 +22,8 @@ const routes: Routes = [
   {
     path: 'meal-category',
     loadChildren: () => import('./pages/meal-category/meal-category.module').then( m => m.MealCategoryPageModule)
-  },  {
+  },
+  {
     path: 'display-meal',
     loadChildren: () => import('./pages/display-meal/display-meal.module').then( m => m.DisplayMealPageModule)
   },
@@ -33,7 +34,16 @@ const routes: Routes = [
   {
     path: 'inicio-app',
     loadChildren: () => import('./pages/inicio-app/inicio-app.module').then( m => m.InicioAppPageModule)
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'display-ingredient',
+    loadChildren: () => import('./pages/display-ingredient/display-ingredient.module').then( m => m.DisplayIngredientPageModule)
   }
+
 
 ];
 

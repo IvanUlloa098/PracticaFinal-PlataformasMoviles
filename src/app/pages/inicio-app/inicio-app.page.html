@@ -1,9 +1,50 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>inicioApp</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-titulos-paginas tituloPagina = "FreshNow"></app-titulos-paginas>
+<style>
+  
+</style>
 
 <ion-content>
+  <img src="../../../assets/images/iconPrueba.jpg">
+  
+  <!-- Listado de Recomendaciones -->
+  <ion-toolbar>
+    <h2 id="Recomendaciones">Recommendations</h2>
+  </ion-toolbar>
+  <ion-slides class="ion-margin-top" [options]="option">
+      <ion-slide *ngFor="let item of meals ">
+        <div  *ngFor="let valores of item">
+          <ion-card (click)="viewMeal(valores.idMeal)">
+            <img [src]="valores.strMealThumb" alt="">     
+            <ion-card-content>
+              {{valores.strCategory}} -- {{valores.strArea}}
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </ion-slide>
+  </ion-slides>
+  <!-- Listado de Los mejores ingredientes -->
+  <ion-toolbar>
+    <h2 id="Recomendaciones">Los mejores ingredientes</h2>
+  </ion-toolbar>
+  
+  <ion-slides class="ion-margin-top" [options]="option">
+      <ion-slide *ngFor="let ingredient of ingredients ">
+        
+          <ion-card (click)="viewIngredient(ingredient.idIngredient)">
+            <img [src]="concatURL(ingredient.strIngredient)" alt="">     
+            <ion-card-content>
+              {{ingredient.strIngredient}} 
+            </ion-card-content>
+          </ion-card>
+       
+      </ion-slide>
+  </ion-slides>
 
+
+  <!--</ion-list>
+  -->
+
+  <!-- 
+  <app-barra-navegacion></app-barra-navegacion>
+  -->
 </ion-content>
