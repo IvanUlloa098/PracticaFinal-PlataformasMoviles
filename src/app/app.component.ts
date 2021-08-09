@@ -9,7 +9,7 @@ export class AppComponent {
     { title: 'Inicio', url: '/inicio-app', icon: 'home' },
     { title: 'Search', url: '/search', icon: 'archive' },
     { title: 'Cuenta', url: '/myaccount', icon: 'body' },
-    { title: 'Carro', url: '/shoping-car', icon: 'cart' },
+    { title: 'Carro', url: '/shopping-cart', icon: 'cart' },
     { title: 'About Us', url: '/about-us', icon: 'cafe' },
     
   ];
