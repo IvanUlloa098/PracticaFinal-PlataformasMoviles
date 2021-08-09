@@ -1,0 +1,30 @@
+<app-titulos-paginas tituloPagina = "Shopping-Cart"></app-titulos-paginas>
+
+<ion-content>
+  <ion-list lines="none">
+
+    <div>
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label>Ingredients To Buy</ion-label>
+        </ion-item-divider>
+        
+        <ion-item *ngFor="let item of listaDeComprasPorPagar | async">
+          <ion-avatar slot="start">
+            <img [src]="concatURL(item.nameImageIngredient)" alt="">
+          </ion-avatar>
+          <ion-label class="ion-text-wrap">
+            <ion-text color="primary"><h2>{{item.nameImageIngredient}}</h2></ion-text>            
+          </ion-label>
+          <ion-note slot="end" >${{item.precioIngrediente}}</ion-note>
+          <ion-note slot="end" >{{item.units}}</ion-note>
+          <ion-note slot="end" >${{item.amount}}</ion-note>
+          <ion-icon name="trash" size="small" slot="end" (click)="cancelarProducto(item)"></ion-icon>
+        </ion-item>
+          
+      </ion-item-group>
+    </div>
+
+  </ion-list>
+  <ion-button expand="block" (click)="realizarPago()">Realizar Pago</ion-button>
+</ion-content>

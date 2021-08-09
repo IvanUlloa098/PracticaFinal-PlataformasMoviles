@@ -86,7 +86,7 @@ export class DisplayIngredientPage implements OnInit {
   }
 
   goToBuyNow(){
-
+    this.router.navigate(['shopping-cart'])
   }
 
   async addToCart(idIngrediente: string, priceIngredient: string){
@@ -122,11 +122,12 @@ export class DisplayIngredientPage implements OnInit {
               this.item.units = data.amount
               this.item.amount = data.amount*precioProducto
               this.item.user = "testing-v2"
-              
+              this.item.nameImageIngredient = this.nameIngredient
+              this.item.precioIngrediente = precioProducto
               //console.log(this.item.idIngredient)
               //console.log(name)
               this.cartService.addToCart(this.item)
-                  
+                 
             }
             console.log('Saved clicked');  
           }  
