@@ -48,8 +48,27 @@ const routes: Routes = [
   {
     path: 'myaccount',
     loadChildren: () => import('./pages/myaccount/myaccount.module').then( m => m.MyaccountPageModule), canActivate : [GuardnopasarGuard]
+  },
+  {
+    path: 'inicio-app',
+    loadChildren: () => import('./pages/inicio-app/inicio-app.module').then( m => m.InicioAppPageModule)
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'display-ingredient',
+    loadChildren: () => import('./pages/display-ingredient/display-ingredient.module').then( m => m.DisplayIngredientPageModule)
+  },
+  {
+    path: 'location',
+    loadChildren: () => import('./pages/location/location.module').then( m => m.LocationPageModule)
+  },
+  {
+    path: 'about-us',
+    loadChildren: () => import('./pages/about-us/about-us.module').then( m => m.AboutUsPageModule)
   }
-
 
 
 ];

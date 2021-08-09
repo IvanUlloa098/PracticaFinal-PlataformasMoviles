@@ -24,7 +24,7 @@ export class SearchPage implements OnInit {
   }
 
   async initializeItems(): Promise<any> {
-    const contactos = await this.mealsService.getSearchResult(this.params)
+    const contactos = await this.mealsService.getMealById(this.params)
     
     this.mealsBackup = contactos['meals'];
     return contactos['meals'];

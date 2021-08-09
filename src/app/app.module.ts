@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AgmCoreModule } from '@agm/core';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -18,6 +19,7 @@ import { environment } from 'src/environments/environment';
 import { DatePipe } from '@angular/common';
 import { IonicRatingComponentModule } from 'ionic-rating-component';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,9 +30,10 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
     AngularFirestoreModule, AngularFireAuthModule, 
     AngularFireStorageModule, 
     HttpClientModule, 
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyCT9wzsIIAkW95uHWVvCbBEP-xtjNbJPow', libraries: ['places', 'geometry']}),
     IonicRatingComponentModule,
     AppRoutingModule],
-  providers: [GooglePlus, DatePipe,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [CallNumber, GooglePlus, DatePipe,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

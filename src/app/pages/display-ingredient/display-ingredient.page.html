@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>display-ingredient</ion-title>
+  </ion-toolbar>
+  <style>
+    :root {
+      --ion-safe-area-top: 20px;
+      --ion-safe-area-bottom: 22px;
+    }
+
+    header {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25em;
+      text-transform: uppercase;
+    }
+
+    section {
+      margin-top: 1em;
+      margin-bottom: 2.5em;
+    }
+
+    section:not(.full-width),
+    .full-width > header {
+      padding: 0 10px;
+    }
+  </style>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{nameIngredient}}</ion-card-title>
+    </ion-card-header>
+    <ion-img  [src]="concatURL(nameIngredient)"></ion-img>
+    
+    
+    <ion-grid class="full-width">
+      <ion-row>
+        <ion-col  class="full-width">
+            <h2 id="presentacionPrecio">$ {{priceIngredient}}</h2>
+        </ion-col>
+        <ion-col class="full-width">
+          <h2 id = "PresentacionIcon" ><ion-icon name="heart"></ion-icon></h2>
+        </ion-col> 
+        
+      </ion-row>
+      <ion-row>
+        <ion-col  class="full-width">
+          <ion-button color="primary" shape="round" fill="outline" (click)="addToCart(idIngrediente, priceIngredient)">ADD TO CART</ion-button>
+        </ion-col>
+        <ion-col  class="full-width">
+          <ion-button color="secondary" shape="round" >BUY NOW</ion-button>
+        </ion-col>
+         
+      </ion-row>
+    </ion-grid>
+    
+
+    <ion-card-content>
+      {{descriptionIngredient}} 
+    </ion-card-content>
+  </ion-card>
+
+  
+
+</ion-content>
