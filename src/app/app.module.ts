@@ -17,6 +17,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
 import { DatePipe } from '@angular/common';
 import { IonicRatingComponentModule } from 'ionic-rating-component';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +30,7 @@ import { IonicRatingComponentModule } from 'ionic-rating-component';
     HttpClientModule, 
     IonicRatingComponentModule,
     AppRoutingModule],
-  providers: [DatePipe,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [GooglePlus, DatePipe,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
