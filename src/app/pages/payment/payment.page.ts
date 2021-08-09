@@ -23,6 +23,9 @@ export class PaymentPage implements OnInit {
   pago: Payment;
   deliveryFee : number
   idUser: string = ""
+  idcart: string
+
+
   constructor(public authservice : AuthenticationService,private route: ActivatedRoute, private router: Router, private cartservice: CartService, public alertController: AlertController){
     route.queryParams.subscribe(params =>{
       console.log(params)
@@ -64,21 +67,12 @@ export class PaymentPage implements OnInit {
   
   guardarPago() {
     //this.cartservice.realizarPagoProductos();
+
+    
     this.listaDeComprasPorPagar.subscribe(valores =>{
       valores.forEach(valor => {
-        
-        this.item = new Item() 
-        this.item.id = valor.id
-        this.item.idIngredient = valor.idIngredient
-        this.item.units = valor.units
-        this.item.amount = valor.amount 
-        this.item.user = valor.user
-        this.item.nameImageIngredient = valor.nameImageIngredient
-        this.item.precioIngrediente = valor.precioIngrediente
-        
-
-        this.cartservice.confirmarPagoProductos(this.item)
-
+//        this.idcart = valor.id
+        this.cartservice.confirmarPagoProductos(valor)
         this.pago = new Payment();
         this.pago.idCart = valor.id
         this.pago.subtotal =  this.subtotal
@@ -87,10 +81,14 @@ export class PaymentPage implements OnInit {
         this.pago.total = this.total
         this.pago.pagado = true
         this.cartservice.realizarPagoProductos(this.pago)
+      
       }); 
+
+      
+
     });
 
-
+  
     const alert = this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Thanks for using Fresh Now',
@@ -98,7 +96,10 @@ export class PaymentPage implements OnInit {
       buttons: ['ACCEPT']
     });
     
-    this.router.navigate(['/index'])
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(["tabs"]);
+
     
   }
 }
