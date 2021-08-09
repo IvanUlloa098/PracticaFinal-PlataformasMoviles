@@ -48,7 +48,7 @@ export class LoginPage implements OnInit{
 
         console.log(" VER ELEMENTO", element[0]);
        
-          this.router.navigate(["/myaccount"])
+          this.router.navigate(["/inicio-app"])
 
        
       });

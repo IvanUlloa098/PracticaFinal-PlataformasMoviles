@@ -43,7 +43,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule), canActivate : [GuardpasarGuard]
   },
   {
     path: 'myaccount',
@@ -51,11 +51,11 @@ const routes: Routes = [
   },
   {
     path: 'inicio-app',
-    loadChildren: () => import('./pages/inicio-app/inicio-app.module').then( m => m.InicioAppPageModule)
+    loadChildren: () => import('./pages/inicio-app/inicio-app.module').then( m => m.InicioAppPageModule), canActivate : [GuardnopasarGuard]
   },
   {
     path: 'tabs',
-    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule), canActivate : [GuardnopasarGuard]
   },
   {
     path: 'display-ingredient',
@@ -63,11 +63,11 @@ const routes: Routes = [
   },
   {
     path: 'location',
-    loadChildren: () => import('./pages/location/location.module').then( m => m.LocationPageModule)
+    loadChildren: () => import('./pages/location/location.module').then( m => m.LocationPageModule), canActivate : [GuardnopasarGuard]
   },
   {
     path: 'about-us',
-    loadChildren: () => import('./pages/about-us/about-us.module').then( m => m.AboutUsPageModule)
+    loadChildren: () => import('./pages/about-us/about-us.module').then( m => m.AboutUsPageModule), canActivate : [GuardnopasarGuard]
   }
 
 

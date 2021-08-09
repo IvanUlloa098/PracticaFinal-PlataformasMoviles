@@ -23,7 +23,7 @@ export class GuardnopasarGuard implements CanActivate {
         return this.afauth.authState.pipe(map( auth => {
 
           if(auth === null){
-            this.router.navigate(['/login']);
+            this.router.navigate(['/index']);
             return false;
           } else {
             
