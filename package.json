@@ -34,6 +34,7 @@
     "call-number": "^1.0.1",
     "cordova-plugin-firebase-authentication": "^5.0.0",
     "cordova-plugin-googleplus": "^8.5.2",
+    "cordova-support-android-plugin": "^1.0.0",
     "firebase": "^8.8.1",
     "ionic-rating-component": "^1.2.1",
     "rxjs": "~6.6.0",
