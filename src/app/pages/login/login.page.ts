@@ -48,7 +48,7 @@ export class LoginPage implements OnInit{
 
         console.log(" VER ELEMENTO", element[0]);
        
-          this.router.navigate(["/inicio-app"])
+          this.router.navigate(["/tabs"])
 
        
       });
@@ -65,7 +65,7 @@ export class LoginPage implements OnInit{
 
   googleLogin() {
     this.AuthenticationService.googleLogin();
-    this.router.navigate(["/myaccount"])
+    this.router.navigate(["/tabs"])
     }
     
   emailPasswordLogin() {

@@ -98,7 +98,7 @@ export class PaymentPage implements OnInit {
       buttons: ['ACCEPT']
     });
     
-    this.router.navigate([''])
+    this.router.navigate(['/index'])
     
   }
 }
