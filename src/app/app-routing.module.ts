@@ -39,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'index',
-    loadChildren: () => import('./pages/index/index.module').then( m => m.IndexPageModule), canActivate : [GuardpasarGuard]
+    loadChildren: () => import('./pages/index/index.module').then( m => m.IndexPageModule)
   },
   {
     path: 'login',
@@ -51,31 +51,31 @@ const routes: Routes = [
   },
   {
     path: 'inicio-app',
-    loadChildren: () => import('./pages/inicio-app/inicio-app.module').then( m => m.InicioAppPageModule)
+    loadChildren: () => import('./pages/inicio-app/inicio-app.module').then( m => m.InicioAppPageModule), canActivate : [GuardnopasarGuard]
   },
   {
     path: 'tabs',
-    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule), canActivate : [GuardnopasarGuard]
   },
   {
     path: 'display-ingredient',
-    loadChildren: () => import('./pages/display-ingredient/display-ingredient.module').then( m => m.DisplayIngredientPageModule)
+    loadChildren: () => import('./pages/display-ingredient/display-ingredient.module').then( m => m.DisplayIngredientPageModule), canActivate : [GuardnopasarGuard]
   },
   {
     path: 'location',
-    loadChildren: () => import('./pages/location/location.module').then( m => m.LocationPageModule)
+    loadChildren: () => import('./pages/location/location.module').then( m => m.LocationPageModule), canActivate : [GuardnopasarGuard]
   },
   {
     path: 'shopping-cart',
-    loadChildren: () => import('./pages/shopping-cart/shopping-cart.module').then( m => m.ShoppingCartPageModule)
+    loadChildren: () => import('./pages/shopping-cart/shopping-cart.module').then( m => m.ShoppingCartPageModule), canActivate : [GuardnopasarGuard]
   },
   {
     path: 'payment',
-    loadChildren: () => import('./pages/payment/payment.module').then( m => m.PaymentPageModule)
+    loadChildren: () => import('./pages/payment/payment.module').then( m => m.PaymentPageModule), canActivate : [GuardnopasarGuard]
   },
   {
     path: 'about-us',
-    loadChildren: () => import('./pages/about-us/about-us.module').then( m => m.AboutUsPageModule)
+    loadChildren: () => import('./pages/about-us/about-us.module').then( m => m.AboutUsPageModule), canActivate : [GuardnopasarGuard]
   }
 
 

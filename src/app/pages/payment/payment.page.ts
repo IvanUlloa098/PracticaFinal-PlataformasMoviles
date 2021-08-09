@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Route } from '@angular/compiler/src/core';
 import { CartService } from 'src/app/service/cart.service';
 import { MealsService } from 'src/app/service/meals.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Item } from 'src/app/domain/item';
 import { Payment } from 'src/app/domain/payment';
+import { AuthenticationService } from 'src/app/service/authentication.service';
 
 @Component({
   selector: 'app-payment',
@@ -20,12 +21,33 @@ export class PaymentPage implements OnInit {
   total: number = 0
   item: Item;
   pago: Payment;
-  constructor(private router: Router, private cartservice: CartService, public alertController: AlertController){}
+  deliveryFee : number
+  idUser: string = ""
+  constructor(public authservice : AuthenticationService,private route: ActivatedRoute, private router: Router, private cartservice: CartService, public alertController: AlertController){
+    route.queryParams.subscribe(params =>{
+      console.log(params)
+      //Para parametros constantes
+      //this.contacto = params.contacto;
+      if(this.router.getCurrentNavigation().extras.queryParams){
+        this.deliveryFee = this.router.getCurrentNavigation().extras.queryParams.deliveryFee;
+        this.deliveryFee  = Number((this.deliveryFee).toFixed(2))
+      }
+    })
+  }
 
-  ngOnInit() {
-    this.listaDeComprasPorPagar = this.cartservice.getCarShopping();
+  async ngOnInit() {
+    this.authservice.updateUserData;
+
+    await this.authservice.getUserAuth().subscribe(
+      user =>{
+        this.idUser = user.email;
+        this.listaDeComprasPorPagar = this.cartservice.getCarShopping(this.idUser);
+        this.calcularSubtotal()
+      }
+    );
+    
     //console.log(this.listaDeComprasPorPagar)
-    this.calcularSubtotal()
+    
   }
 
   calcularSubtotal(){
@@ -34,7 +56,7 @@ export class PaymentPage implements OnInit {
         this.subtotal =  Number((this.subtotal +valor.amount).toFixed(2))
         this.iva = Number(((this.subtotal*12)/100).toFixed(2)); 
         this.taxes = Number(((this.subtotal*5)/100).toFixed(2)); 
-        this.total = Number((this.subtotal+this.iva+this.taxes).toFixed(2))
+        this.total = Number((this.subtotal+this.iva+this.taxes+this.deliveryFee).toFixed(2))
       }); 
     });
   }

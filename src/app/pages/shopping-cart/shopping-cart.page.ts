@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NavigationExtras, Router} from "@angular/router";
 import { Item } from 'src/app/domain/item';
+import { AuthenticationService } from 'src/app/service/authentication.service';
 import { CartService } from 'src/app/service/cart.service';
 import { MealsService } from 'src/app/service/meals.service';
 
@@ -13,13 +14,28 @@ export class ShoppingCartPage implements OnInit {
 
   listaDeComprasPorPagar: any
   ingredients: any
+  idUser: string;
 
 
-  constructor(private router: Router, private mealsService : MealsService,  private cartservice: CartService) { }
 
-  ngOnInit() {
-    this.listaDeComprasPorPagar = this.cartservice.getCarShopping();
-    console.log(this.listaDeComprasPorPagar)
+  constructor(public authservice : AuthenticationService,private router: Router, private mealsService : MealsService,  private cartservice: CartService) { }
+
+  async ngOnInit() {
+    //this.authservice.updateUserData;
+
+    await this.authservice.getUserAuth().subscribe(
+      user =>{
+        //console.log("user: ------",user.email)
+        this.idUser = user.email;
+        console.log("this.idUser", this.idUser)
+        this.listaDeComprasPorPagar = this.cartservice.getCarShopping(this.idUser);
+        console.log(this.listaDeComprasPorPagar)
+      }
+    );
+
+      
+
+    
   }
 
   concatURL(name) {
@@ -32,7 +48,9 @@ export class ShoppingCartPage implements OnInit {
   }
 
   realizarPago(){
-    this.router.navigate(['payment'])
+
+    this.router.navigate(['location'])
+    //this.router.navigate(['payment'])
   }
 
 }

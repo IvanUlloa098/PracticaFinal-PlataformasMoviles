@@ -49,10 +49,11 @@ export class DisplayMealPage implements OnInit {
   }
 
   async ngOnInit() {
+    this.authservice.updateUserData;
 
-    this.authservice.getUserAuth().subscribe(
+    await this.authservice.getUserAuth().subscribe(
       user =>{
-        this.idUser = user.uid;
+        this.idUser = user.email;
       }
     );
 
@@ -100,6 +101,10 @@ export class DisplayMealPage implements OnInit {
   getIngredient(name: string) {
     return this.ingredients['meals'].find(s => s.strIngredient === name).idIngredient
   }
+
+  
+
+  
 
   getPrice(id: string) {
     return this.prices.find(s => s.idIngredient === id).price
@@ -168,8 +173,11 @@ export class DisplayMealPage implements OnInit {
               this.item = new Item() 
               this.item.idIngredient = this.n
               this.item.units = data.amount
-              this.item.amount = data.amount*this.p
+              this.item.amount = this.p
               this.item.user = this.idUser
+              this.item.nameImageIngredient = name
+              this.item.precioIngrediente = this.p
+
               
               //console.log(this.item.idIngredient)
               //console.log(name)
@@ -218,7 +226,10 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
-      
+      this.item.nameImageIngredient = this.meal[0].strIngredient1
+      this.item.precioIngrediente = this.p
+
+
       this.cartService.addToCart(this.item)
     }
 
@@ -231,6 +242,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient2
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }
@@ -244,6 +257,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient3
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }
@@ -257,6 +272,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient4
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }
@@ -270,6 +287,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient5
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }
@@ -283,6 +302,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient6
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }
@@ -296,6 +317,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient7
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }
@@ -309,6 +332,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient8
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }
@@ -322,6 +347,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient9
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }
@@ -335,6 +362,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient10
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }
@@ -348,6 +377,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient11
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }
@@ -361,6 +392,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient12
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }
@@ -374,6 +407,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient13
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }
@@ -387,6 +422,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient14
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }
@@ -400,6 +437,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient15
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }
@@ -413,6 +452,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient16
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }
@@ -426,6 +467,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient17
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }
@@ -439,7 +482,9 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
-      
+      this.item.nameImageIngredient = this.meal[0].strIngredient18
+      this.item.precioIngrediente = this.p
+
       this.cartService.addToCart(this.item)
     }
 
@@ -452,6 +497,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient19
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }
@@ -465,6 +512,8 @@ export class DisplayMealPage implements OnInit {
       this.item.units = 1
       this.item.amount = this.p
       this.item.user = this.idUser
+      this.item.nameImageIngredient = this.meal[0].strIngredient20
+      this.item.precioIngrediente = this.p
       
       this.cartService.addToCart(this.item)
     }

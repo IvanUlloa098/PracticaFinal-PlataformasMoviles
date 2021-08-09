@@ -23,9 +23,9 @@ export class CartService {
 
   }
 
-  getCarShopping(): Observable<any>{
+  getCarShopping(id: string): Observable<any>{
     return this.afs.collection("cart", 
-                             ref => ref.where("pagado", "==", false).where("active", "==", true)).valueChanges();
+                             ref => ref.where("pagado", "==", false).where("active", "==", true).where("user", "==", id)).valueChanges();
   }
 
 

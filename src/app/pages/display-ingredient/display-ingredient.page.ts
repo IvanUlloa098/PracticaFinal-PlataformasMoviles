@@ -48,13 +48,13 @@ export class DisplayIngredientPage implements OnInit {
   }
 
   async ngOnInit() {
-
-    this.authservice.getUserAuth().subscribe(
+    this.authservice.updateUserData;
+    await this.authservice.getUserAuth().subscribe(
       user =>{
-        this.idUser = user.uid;
+        this.idUser = user.email;
       }
     );
-
+      
     this.ingredients = await this.mealsService.getIngredients();
     
     this.prices = this.mealsService.getPrices().subscribe(valores  => {
