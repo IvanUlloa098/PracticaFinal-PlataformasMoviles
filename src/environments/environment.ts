@@ -14,7 +14,9 @@ export const environment = {
     appId: "1:109638532847:web:c89bbf7bc4cbf7a128e51a"
   },
 
-  WS_PATH: "https://www.themealdb.com/api/json/v1/1"
+  WS_PATH: "https://www.themealdb.com/api/json/v1/1",
+  googleWebClientId : "Qz5zi2nZB4V0YuC5hCXF3RvE"
+
 };
 
 /*

@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router'
+import { GuardnopasarGuard } from './guards/guardnopasar.guard';
+import { GuardpasarGuard } from './guards/guardpasar.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: '/index',
     pathMatch: 'full'
   },
   {
@@ -13,23 +15,39 @@ const routes: Routes = [
   },
   {
     path: 'search',
-    loadChildren: () => import('./pages/search/search.module').then( m => m.SearchPageModule)
+    loadChildren: () => import('./pages/search/search.module').then( m => m.SearchPageModule), canActivate : [GuardnopasarGuard]
   },
   {
     path: 'category',
-    loadChildren: () => import('./pages/category/category.module').then( m => m.CategoryPageModule)
+    loadChildren: () => import('./pages/category/category.module').then( m => m.CategoryPageModule), canActivate : [GuardnopasarGuard]
   },
   {
     path: 'meal-category',
-    loadChildren: () => import('./pages/meal-category/meal-category.module').then( m => m.MealCategoryPageModule)
+    loadChildren: () => import('./pages/meal-category/meal-category.module').then( m => m.MealCategoryPageModule), canActivate : [GuardnopasarGuard]
   },
   {
     path: 'display-meal',
-    loadChildren: () => import('./pages/display-meal/display-meal.module').then( m => m.DisplayMealPageModule)
+    loadChildren: () => import('./pages/display-meal/display-meal.module').then( m => m.DisplayMealPageModule), canActivate : [GuardnopasarGuard]
   },
   {
     path: 'search-ingredients',
-    loadChildren: () => import('./pages/search-ingredients/search-ingredients.module').then( m => m.SearchIngredientsPageModule)
+    loadChildren: () => import('./pages/search-ingredients/search-ingredients.module').then( m => m.SearchIngredientsPageModule), canActivate : [GuardnopasarGuard]
+  },
+  {
+    path: 'usercreate',
+    loadChildren: () => import('./pages/usercreate/usercreate.module').then( m => m.UsercreatePageModule), canActivate : [GuardpasarGuard]
+  },
+  {
+    path: 'index',
+    loadChildren: () => import('./pages/index/index.module').then( m => m.IndexPageModule), canActivate : [GuardpasarGuard]
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'myaccount',
+    loadChildren: () => import('./pages/myaccount/myaccount.module').then( m => m.MyaccountPageModule), canActivate : [GuardnopasarGuard]
   },
   {
     path: 'inicio-app',
@@ -48,16 +66,18 @@ const routes: Routes = [
     loadChildren: () => import('./pages/location/location.module').then( m => m.LocationPageModule)
   },
   {
-    path: 'about-us',
-    loadChildren: () => import('./pages/about-us/about-us.module').then( m => m.AboutUsPageModule)
-  },  {
     path: 'shopping-cart',
     loadChildren: () => import('./pages/shopping-cart/shopping-cart.module').then( m => m.ShoppingCartPageModule)
   },
   {
     path: 'payment',
     loadChildren: () => import('./pages/payment/payment.module').then( m => m.PaymentPageModule)
+  },
+  {
+    path: 'about-us',
+    loadChildren: () => import('./pages/about-us/about-us.module').then( m => m.AboutUsPageModule)
   }
+
 
 
 

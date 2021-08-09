@@ -1,0 +1,21 @@
+<ion-header>
+  
+</ion-header>
+
+<ion-content  class="background">
+
+    <ion-grid  style=" margin-top:  100%;">
+      <ion-input  id="input" placeholder="Name"  [(ngModel)]="User.displayName"></ion-input>
+      <ion-input  id="input" placeholder="Email usuario1@.com"  [(ngModel)]="User.email"></ion-input>
+      <ion-input id = "input"  placeholder= "Password" type = "Password" [(ngModel)]="User.password"></ion-input>
+    </ion-grid>
+  
+
+  <ion-grid>
+    <ion-label id="label"> _________________________ </ion-label>
+    <ion-button id="botonIniciar" style=" margin-top: -9%;" color="success" routerLink= "/login" (click)="registro()">
+    Guardar
+    </ion-button>
+  </ion-grid>
+  
+</ion-content>
