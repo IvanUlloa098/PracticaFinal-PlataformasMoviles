@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core'
 import { MapsAPILoader } from '@agm/core';
 import { LocationService } from 'src/app/service/location.service';
 import { Address } from 'src/app/domain/address';
+import { AuthenticationService } from 'src/app/service/authentication.service';
 
 @Component({
   selector: 'app-location',
@@ -33,11 +34,19 @@ export class LocationPage implements OnInit {
     client: "https://cdn1.iconfinder.com/data/icons/ecommerce-61/48/eccomerce_-_location-48.png"
   };
 
-  constructor(private locationService: LocationService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
+  idUser: string
+
+
+  constructor(public authservice : AuthenticationService, private locationService: LocationService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
 
   async ngOnInit() {
-    
-    await this.locationService.getLocations("testing").subscribe(res => {
+
+    this.authservice.getUserAuth().subscribe(
+      user =>{
+        this.idUser = user.uid;
+      }
+    );
+    await this.locationService.getLocations(this.idUser).subscribe(res => {
       try {
         this.locations = res;
       } catch (error) { }
@@ -99,7 +108,7 @@ export class LocationPage implements OnInit {
       this.newAdress.latitude = this.latitude
       this.newAdress.longitude = this.longitude
       this.newAdress.name = this.address
-      this.newAdress.user = "testing"
+      this.newAdress.user = this.idUser
 
       this.locationService.saveLocation(this.newAdress)
       console.log("saved")

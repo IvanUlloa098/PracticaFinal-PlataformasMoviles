@@ -25,7 +25,7 @@
     </ion-list-header>
 
     <div *ngFor="let item of ingredients">
-      <ion-item (click)="showPrompt(item)">
+      <ion-item (click)="showPrompt(item.idIngredient)">
         <ion-avatar slot="start">
           <img [src]="concatURL(item.strIngredient)" alt="">
         </ion-avatar>

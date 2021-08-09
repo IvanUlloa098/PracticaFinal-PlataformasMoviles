@@ -25,7 +25,7 @@ export class GuardpasarGuard implements CanActivate {
         if(auth === null){
           return true;
         } else {
-          this.router.navigate(['/myaccount']);
+          this.router.navigate(['tabs']);
           return false;
         }
           

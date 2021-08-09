@@ -5,6 +5,7 @@ import { MealsService } from 'src/app/service/meals.service';
 import { AlertController } from '@ionic/angular';
 import { Item } from 'src/app/domain/item';
 import { CartService } from 'src/app/service/cart.service';
+import { AuthenticationService } from 'src/app/service/authentication.service';
 
 @Component({
   selector: 'app-display-ingredient',
@@ -24,11 +25,14 @@ export class DisplayIngredientPage implements OnInit {
   public ingrediente : any
   precioIngrediente: number
   item: Item
+  idUser: string
+
 
   constructor(private route: ActivatedRoute, 
               private router: Router, 
               private mealsService : MealsService, 
               public alertController: AlertController,
+              public authservice : AuthenticationService,
               private cartService: CartService) { 
     
     
@@ -44,6 +48,13 @@ export class DisplayIngredientPage implements OnInit {
   }
 
   async ngOnInit() {
+
+    this.authservice.getUserAuth().subscribe(
+      user =>{
+        this.idUser = user.uid;
+      }
+    );
+
     this.ingredients = await this.mealsService.getIngredients();
     
     this.prices = this.mealsService.getPrices().subscribe(valores  => {
@@ -121,7 +132,7 @@ export class DisplayIngredientPage implements OnInit {
               this.item.idIngredient = idIngrediente
               this.item.units = data.amount
               this.item.amount = data.amount*precioProducto
-              this.item.user = "testing-v2"
+              this.item.user = this.idUser
               this.item.nameImageIngredient = this.nameIngredient
               this.item.precioIngrediente = precioProducto
               //console.log(this.item.idIngredient)
