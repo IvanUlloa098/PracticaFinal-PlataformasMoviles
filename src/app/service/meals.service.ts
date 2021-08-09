@@ -40,7 +40,7 @@ export class MealsService {
   getPricesByID(id: string):Observable<any[]> {
     console.log("-------------------------------")
     return this.afs.collection("ingredients", 
-                              ref => ref.where("idIngredient", "==", id)).valueChanges();
+                              ref => ref.where("idIngredient", "==", id )).valueChanges();
   }
 
 }

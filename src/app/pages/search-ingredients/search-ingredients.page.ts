@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { MealsService } from 'src/app/service/meals.service';
 import { AlertController, NavController } from '@ionic/angular'; 
 import { Item } from 'src/app/domain/item';
@@ -56,49 +56,14 @@ export class SearchIngredientsPage implements OnInit {
     });
   }
 
-  async showPrompt(item: any) {  
-    this.p = this.getPrice(item.idIngredient)
-
-    const prompt = await this.alertCtrl.create({  
-      header: 'Buy ingredient',  
-      subHeader: item.strIngredient+" $"+this.p, 
-      message: 'Enter the amount you need',  
-      inputs: [  
-        {  
-          name: 'amount',          
-          placeholder: 'Your amount...' ,
-          type: 'number',
-          value: 1
-           
-        },  
-      ],  
-      buttons: [  
-        {  
-          text: 'Cancel',  
-          handler: data => {  
-            console.log('Cancel clicked');  
-          }  
-        },  
-        {  
-          text: 'Buy',  
-          handler: async data => {  
-            if(data.amount) { 
-              this.item = new Item() 
-              this.item.idIngredient = item.idIngredient
-              this.item.units = data.amount
-              this.item.amount = data.amount*this.p
-              this.item.user = "testing"
-              
-              console.log(this.item)
-              this.cartService.addToCart(this.item)
-                  
-            }
-            console.log('Saved clicked');  
-          }  
-        }  
-      ]  
-    });  
-    await prompt.present();  
+  showPrompt(id: string) {  
+    let params: NavigationExtras = {
+      queryParams: {
+        id:id
+      }
+    }
+    //console.log("id: ",id)
+    this.router.navigate(['display-ingredient'], params)
   }  
 
   getPrice(id: string) {

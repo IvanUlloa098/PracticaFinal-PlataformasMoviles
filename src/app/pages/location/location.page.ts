@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core'
 import { MapsAPILoader } from '@agm/core';
 import { LocationService } from 'src/app/service/location.service';
 import { Address } from 'src/app/domain/address';
+import { AuthenticationService } from 'src/app/service/authentication.service';
+import { Router, NavigationExtras} from '@angular/router';
 
 @Component({
   selector: 'app-location',
@@ -33,15 +35,28 @@ export class LocationPage implements OnInit {
     client: "https://cdn1.iconfinder.com/data/icons/ecommerce-61/48/eccomerce_-_location-48.png"
   };
 
-  constructor(private locationService: LocationService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
+  idUser: string
+
+
+  constructor(private router: Router,public authservice : AuthenticationService, private locationService: LocationService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
 
   async ngOnInit() {
+    this.authservice.updateUserData;
+
+    await this.authservice.getUserAuth().subscribe(
+      user =>{
+        this.idUser = user.email;
+        this.locationService.getLocations(this.idUser).subscribe(res => {
+          try {
+            this.locations = res;
+          } catch (error) { }
+        })
+      }
+    );
     
-    await this.locationService.getLocations("testing").subscribe(res => {
-      try {
-        this.locations = res;
-      } catch (error) { }
-    })
+
+
+    
 
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
@@ -99,14 +114,19 @@ export class LocationPage implements OnInit {
       this.newAdress.latitude = this.latitude
       this.newAdress.longitude = this.longitude
       this.newAdress.name = this.address
-      this.newAdress.user = "testing"
+      this.newAdress.user = this.idUser
 
       this.locationService.saveLocation(this.newAdress)
       console.log("saved")
     } else {
       console.log("navigate without saving")
     }
-
+    let params: NavigationExtras = {
+      queryParams: {
+        deliveryFee: this.deliveryFee
+      }
+    }
+    this.router.navigate(['payment'], params)
   }
 
   setLocation(item: any){
@@ -141,12 +161,14 @@ export class LocationPage implements OnInit {
     this.distance = distance
 
     if(distance>4000){
-      this.deliveryFee = 2.0+((distance-4000)*0.01)
+      this.deliveryFee = 2.0+((distance-4000)*0.00013)
     } else {
       this.deliveryFee = 2.0
     }
 
     console.log("Distance: "+distance+"   Fee: $"+this.deliveryFee)
+    
+    
   }
 
 }

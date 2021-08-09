@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item-group>
+    
+    <ion-item>
+      <ion-label class="labelFacturaPago" color="dark" style="font-size: x-large;">Billing information</ion-label>
+    </ion-item>
+
+    <ion-grid>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label class="labelFactura" color="primary">Subtotal:</ion-label>  
+            <ion-label style="font-size: 16; text-align: center;">{{subtotal}}</ion-label>   
+          </ion-item>
+        </ion-col>
+
+        
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label class="labelFactura" color="primary">IVA:</ion-label>   
+            <ion-label style="font-size: 16; text-align: center;">{{iva}}</ion-label>   
+          </ion-item>
+        </ion-col>
+        
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label class="labelFactura" color="primary">TAXES:</ion-label>     
+            <ion-label style="font-size: 16; text-align: center;">{{taxes}}</ion-label>          
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label class="labelFactura" color="primary">Delivery:</ion-label>     
+            <ion-label style="font-size: 16; text-align: center;">{{deliveryFee}}</ion-label>          
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label class="labelFactura" color="primary">Total to Pay</ion-label>
+            <ion-label style="font-size: 16; text-align: center;"> {{total}} </ion-label>       
+          </ion-item>
+        </ion-col>
+        
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col class="labelFacturaPago">
+          <ion-button id="botonPago" color="primary" expand="block" (click)="guardarPago()">Pay Now</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+    
+  </ion-item-group>
+</ion-content>

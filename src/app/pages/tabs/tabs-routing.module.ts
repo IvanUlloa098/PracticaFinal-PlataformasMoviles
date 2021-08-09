@@ -23,7 +23,20 @@ const routes: Routes = [
       {
         path: 'search',
         loadChildren: () => import('./../../pages/search/search.module').then( m => m.SearchPageModule)
+      },
+      {
+        path: 'shopping-cart',
+        loadChildren: () => import('./../../pages/shopping-cart/shopping-cart.module').then( m => m.ShoppingCartPageModule)
+      },
+      {
+        path: 'payment',
+        loadChildren: () => import('./../../pages/payment/payment.module').then( m => m.PaymentPageModule)
+      },
+      {
+        path: 'myaccount',
+        loadChildren: () => import('./../../pages/myaccount/myaccount.module').then( m => m.MyaccountPageModule)
       }
+    
     ]
   }
 ];
